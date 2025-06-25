@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Taz's Upload">
+    <meta property="og:description" content="Loving haters ❤️">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://taztatic.com/uploads/uploads.html">
+    <meta property="og:image" content="https://taztatic.com/images/logo.png">
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+    <meta property="theme-color" content="#7e57c2">
+    <title>Taz's Upload</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0B1426;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #7e57c2;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Taz</h1>
+        <p>Loving haters ❤️</p>
+        <!-- The image will be dynamically inserted here when accessed with an image parameter -->
+    </div>
+
+    <script>
+        // Get the image path from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const imagePath = urlParams.get('image');
+        
+        if (imagePath) {
+            // Update the Open Graph meta tags for Discord embed
+            document.querySelector('meta[property="og:image"]').content = imagePath;
+            
+            // Create and append the image to the container
+            const container = document.querySelector('.container');
+            const img = document.createElement('img');
+            img.src = imagePath;
+            img.alt = 'Uploaded Image';
+            container.appendChild(img);
+        }
+    </script>
+</body>
+</html>
