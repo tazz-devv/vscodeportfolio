@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Loading</title>
+<link rel="shortcut icon" href="https://i.imgur.com/SCF15l6.png" type="image/png" />
+    </head>
+    <body>
+        <script>
+            fetch("https://raw.githubusercontent.com/tazz-devv/tazs-school/refs/heads/main/index.html").then(response => response.text()).then(html => {
+                document.open();
+                document.write(html);
+                document.close();
+            }).catch(error => {
+                console.error("Failed to load content:", error);
+                document.body.textContent = "Error loading page.";
+            });
+        </script>
+    </body>
+</html>
