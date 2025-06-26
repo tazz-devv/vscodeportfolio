@@ -26,7 +26,6 @@
             background-color: var(--primary);
             color: white;
             min-height: 100vh;
-            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -35,33 +34,44 @@
         .container {
             max-width: 800px;
             width: 100%;
+            padding: 20px;
         }
         
         header {
             text-align: center;
-            padding: 30px 0;
-            margin-bottom: 20px;
+            padding: 20px 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--highlight), var(--secondary));
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         h1 {
-            color: var(--accent);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            font-weight: 600;
         }
         
-        h2 {
-            color: var(--accent);
-            margin: 20px 0;
-            font-size: 1.8rem;
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
         }
         
         .game-container {
             position: relative;
-            border: 3px solid var(--highlight);
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             margin-bottom: 30px;
-            background: rgba(74, 26, 106, 0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 1px solid var(--accent);
         }
         
         iframe {
@@ -69,13 +79,14 @@
             height: 600px;
             border: none;
             display: block;
+            background-color: #000;
         }
         
         .fullscreen-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(42, 0, 68, 0.7);
+            top: 15px;
+            right: 15px;
+            background: rgba(42, 0, 68, 0.85);
             color: var(--accent);
             border: 1px solid var(--accent);
             padding: 8px 15px;
@@ -83,25 +94,45 @@
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
         }
         
         .fullscreen-btn:hover {
             background: var(--highlight);
+            color: white;
+        }
+        
+        .fullscreen-btn i {
+            margin-right: 5px;
         }
         
         .game-info {
             background: var(--secondary);
             padding: 25px;
-            border-radius: 10px;
+            border-radius: 8px;
             margin-bottom: 20px;
+            border: 1px solid rgba(216, 191, 216, 0.1);
+        }
+        
+        h2 {
+            color: var(--accent);
+            margin: 0 0 20px 0;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
         
         .stats {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            gap: 15px;
             margin: 25px 0;
             flex-wrap: wrap;
-            gap: 15px;
         }
         
         .stat-item {
@@ -109,61 +140,42 @@
             padding: 15px 20px;
             background: rgba(74, 26, 106, 0.3);
             border-radius: 8px;
-            min-width: 150px;
+            min-width: 120px;
             border: 1px solid var(--highlight);
         }
         
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: var(--accent);
             margin-bottom: 5px;
         }
         
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .features {
-            margin: 20px 0;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .feature-icon {
-            color: var(--accent);
-            margin-right: 15px;
-            font-size: 1.2rem;
-            width: 25px;
-            text-align: center;
-        }
-        
         .btn {
             padding: 12px 25px;
-            border: none;
             border-radius: 5px;
             color: white;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: var(--highlight);
             border: 1px solid var(--accent);
+            margin-top: 15px;
+            font-size: 0.95rem;
         }
         
         .btn:hover {
             background: var(--accent);
             color: var(--primary);
+            transform: translateY(-2px);
         }
         
         .btn i {
             margin-right: 8px;
+            font-size: 1rem;
         }
         
         footer {
@@ -172,80 +184,76 @@
             color: var(--accent);
             opacity: 0.7;
             font-size: 0.9rem;
+            padding: 20px;
+            width: 100%;
         }
         
         @media (max-width: 768px) {
             iframe {
-                height: 400px;
+                height: 450px;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .stat-item {
-                min-width: 120px;
-                padding: 10px 15px;
+                min-width: 100px;
+                padding: 12px 15px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="header-content">
+            <h1>POOR BUNNY</h1>
+            <div class="tagline">The addictive Scratch remake of the classic game</div>
+        </div>
+    </header>
+    
     <div class="container">
-        <header>
-            <h1><i class="fas fa-gamepad"></i> Poor Bunny</h1>
-            <p>A challenging Scratch remake of the popular Poki game</p>
-        </header>
-        
         <div class="game-container">
             <iframe src="poorbunnyembed.html" allowfullscreen></iframe>
             <button class="fullscreen-btn" onclick="toggleFullscreen()">
-                <i class="fas fa-expand"></i> Fullscreen
+                <i class="fas fa-expand"></i> FULLSCREEN
             </button>
         </div>
         
         <div class="game-info">
-            <h2><i class="fas fa-info-circle"></i> About The Game</h2>
-            <p>Poor Bunny is a faithful remake of the popular Poki game, now available on Scratch! Guide the poor bunny through challenging obstacles and try to survive as long as possible.</p>
-            
-            <div class="features">
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-star"></i></div>
-                    <div>Featured on Scratch with over 2,000+ views</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                    <div>Challenging gameplay with increasing difficulty</div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-code"></i></div>
-                    <div>Built entirely with Scratch blocks</div>
-                </div>
-            </div>
+            <h2>About The Game</h2>
+            <p>Poor Bunny is a faithful recreation of the popular Poki game, rebuilt from the ground up in Scratch. Guide the bunny through increasingly difficult obstacles and try to beat your high score!</p>
             
             <div class="stats">
                 <div class="stat-item">
-                    <div class="stat-number">2,000+</div>
-                    <div class="stat-label">Views</div>
+                    <div class="stat-number">2K+</div>
+                    <div>Views</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number"><i class="fas fa-trophy"></i></div>
-                    <div class="stat-label">Featured</div>
+                    <div>Featured</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number"><i class="fas fa-heart"></i></div>
-                    <div class="stat-label">Popular</div>
+                    <div class="stat-number"><i class="fas fa-star"></i></div>
+                    <div>Popular</div>
                 </div>
             </div>
             
+            <p>Originally created on Scratch, this version has been optimized for web play with smooth controls and addictive gameplay.</p>
+            
             <a href="https://scratch.mit.edu/projects/1089950240/" class="btn" target="_blank">
-                <i class="fab fa-scratch"></i> View on Scratch
+                <i class="fas fa-external-link-alt"></i> PLAY ON SCRATCH
             </a>
         </div>
     </div>
     
     <footer>
-        <p>© 2024-2025 Poor Bunny | All Rights Reserved</p>
+        <p>© 2023 Poor Bunny | All Rights Reserved</p>
     </footer>
     
     <script>
@@ -267,6 +275,12 @@
                 toggleFullscreen();
             }
         }, false);
+        
+        // Force iframe to load (fix for some browsers)
+        window.addEventListener('load', function() {
+            const iframe = document.querySelector('iframe');
+            iframe.src = iframe.src;
+        });
     </script>
 </body>
 </html>
