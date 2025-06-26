@@ -3,44 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poor Bunny - Play Online</title>
+    <title>Poor Bunny - Scratch Remake</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        :root {
+            --primary: #1a0033;
+            --secondary: #2a0044;
+            --accent: #d8bfd8;
+            --highlight: #4a1a6a;
+            --success: #4CAF50;
+            --error: #f44336;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f0f8ff;
-            color: #333;
-            line-height: 1.6;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        header {
-            background-color: #1a3a8f;
+        body {
+            background-color: var(--primary);
             color: white;
-            text-align: center;
-            padding: 2rem 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: var(--accent);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: var(--accent);
+            margin: 20px 0;
+            font-size: 1.8rem;
         }
         
         .game-container {
             position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 2rem auto;
-            border-radius: 8px;
+            border: 3px solid var(--highlight);
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            background: rgba(74, 26, 106, 0.2);
         }
         
         iframe {
@@ -54,71 +75,103 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 4px;
+            background: rgba(42, 0, 68, 0.7);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 8px 15px;
+            border-radius: 5px;
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s;
         }
         
         .fullscreen-btn:hover {
-            background-color: rgba(0,0,0,0.7);
+            background: var(--highlight);
         }
         
         .game-info {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: var(--secondary);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
         
         .stats {
             display: flex;
             justify-content: space-around;
-            margin: 1.5rem 0;
+            margin: 25px 0;
             flex-wrap: wrap;
+            gap: 15px;
         }
         
         .stat-item {
             text-align: center;
-            padding: 1rem;
-            background-color: #f8f9fa;
+            padding: 15px 20px;
+            background: rgba(74, 26, 106, 0.3);
             border-radius: 8px;
-            min-width: 120px;
-            margin: 0.5rem;
+            min-width: 150px;
+            border: 1px solid var(--highlight);
         }
         
         .stat-number {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #1a3a8f;
+            color: var(--accent);
+            margin-bottom: 5px;
         }
         
-        footer {
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .features {
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .feature-icon {
+            color: var(--accent);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 25px;
             text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-            background-color: #1a3a8f;
-            color: white;
         }
         
         .btn {
-            display: inline-block;
-            background-color: #1a3a8f;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
             color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-top: 1rem;
+            cursor: pointer;
             transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            background: var(--highlight);
+            border: 1px solid var(--accent);
         }
         
         .btn:hover {
-            background-color: #0d2a6b;
+            background: var(--accent);
+            color: var(--primary);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: var(--accent);
+            opacity: 0.7;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
@@ -129,24 +182,46 @@
             h1 {
                 font-size: 2rem;
             }
+            
+            .stat-item {
+                min-width: 120px;
+                padding: 10px 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Poor Bunny</h1>
-        <p>A fun and challenging game remade on Scratch</p>
-    </header>
-    
     <div class="container">
+        <header>
+            <h1><i class="fas fa-gamepad"></i> Poor Bunny</h1>
+            <p>A challenging Scratch remake of the popular Poki game</p>
+        </header>
+        
         <div class="game-container">
             <iframe src="poorbunnyembed.html" allowfullscreen></iframe>
-            <button class="fullscreen-btn" onclick="toggleFullscreen()">Fullscreen</button>
+            <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                <i class="fas fa-expand"></i> Fullscreen
+            </button>
         </div>
         
         <div class="game-info">
-            <h2>About Poor Bunny</h2>
-            <p>Poor Bunny is a remake of the popular Poki game, now available on Scratch! Guide the poor bunny through challenging obstacles and try to survive as long as possible.</p>
+            <h2><i class="fas fa-info-circle"></i> About The Game</h2>
+            <p>Poor Bunny is a faithful remake of the popular Poki game, now available on Scratch! Guide the poor bunny through challenging obstacles and try to survive as long as possible.</p>
+            
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-star"></i></div>
+                    <div>Featured on Scratch with over 2,000+ views</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <div>Challenging gameplay with increasing difficulty</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-code"></i></div>
+                    <div>Built entirely with Scratch blocks</div>
+                </div>
+            </div>
             
             <div class="stats">
                 <div class="stat-item">
@@ -154,19 +229,23 @@
                     <div class="stat-label">Views</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">Featured</div>
-                    <div class="stat-label">On Scratch</div>
+                    <div class="stat-number"><i class="fas fa-trophy"></i></div>
+                    <div class="stat-label">Featured</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number"><i class="fas fa-heart"></i></div>
+                    <div class="stat-label">Popular</div>
                 </div>
             </div>
             
-            <p>Originally created on Scratch by me, this game has gained popularity for its fun gameplay and challenging mechanics. The goal is simple - keep the poor bunny alive as long as possible while avoiding obstacles.</p>
-            
-            <a href="https://scratch.mit.edu/projects/1089950240/" class="btn" target="_blank">View on Scratch</a>
+            <a href="https://scratch.mit.edu/projects/1089950240/" class="btn" target="_blank">
+                <i class="fab fa-scratch"></i> View on Scratch
+            </a>
         </div>
     </div>
     
     <footer>
-        <p>© 2024 Poor Bunny Game | All Rights Reserved</p>
+        <p>© 2024 Poor Bunny | All Rights Reserved</p>
     </footer>
     
     <script>
