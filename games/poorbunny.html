@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poor Bunny - Play Online</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #1a3a8f;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+        
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+        
+        .fullscreen-btn:hover {
+            background-color: rgba(0,0,0,0.7);
+        }
+        
+        .game-info {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            min-width: 120px;
+            margin: 0.5rem;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a3a8f;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            background-color: #1a3a8f;
+            color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #1a3a8f;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0d2a6b;
+        }
+        
+        @media (max-width: 768px) {
+            iframe {
+                height: 400px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Poor Bunny</h1>
+        <p>A fun and challenging game remade on Scratch</p>
+    </header>
+    
+    <div class="container">
+        <div class="game-container">
+            <iframe src="poorbunnyembed.html" allowfullscreen></iframe>
+            <button class="fullscreen-btn" onclick="toggleFullscreen()">Fullscreen</button>
+        </div>
+        
+        <div class="game-info">
+            <h2>About Poor Bunny</h2>
+            <p>Poor Bunny is a remake of the popular Poki game, now available on Scratch! Guide the poor bunny through challenging obstacles and try to survive as long as possible.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">2,000+</div>
+                    <div class="stat-label">Views</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Featured</div>
+                    <div class="stat-label">On Scratch</div>
+                </div>
+            </div>
+            
+            <p>Originally created on Scratch by me, this game has gained popularity for its fun gameplay and challenging mechanics. The goal is simple - keep the poor bunny alive as long as possible while avoiding obstacles.</p>
+            
+            <a href="https://scratch.mit.edu/projects/1089950240/" class="btn" target="_blank">View on Scratch</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2024 Poor Bunny Game | All Rights Reserved</p>
+    </footer>
+    
+    <script>
+        function toggleFullscreen() {
+            const iframe = document.querySelector('iframe');
+            
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+        
+        // Allow fullscreen from within iframe
+        window.addEventListener('message', function(e) {
+            if (e.data === 'fullscreen') {
+                toggleFullscreen();
+            }
+        }, false);
+    </script>
+</body>
+</html>
